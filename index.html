@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Productivity Timer</title>
+
+  <link rel="stylesheet" href="style/style.css"> 
+  <link href="style/fontawesome/css/all.css" rel="stylesheet">
+
+  <!-- Load React -->
+  <!-- <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script> -->
+
+  <!-- Don't use this in production: -->
+  <!-- <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> -->
+
+</head>
+
+<body>
+
+  <div class="container-parent">
+
+    <!-- sidenav -->
+    <div id="mySidenav" class="sidenav">
+      <!-- <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> -->
+      <i class="fas fa-2x fa-caret-right" onclick="closeNav()"></i>
+
+      <div class="sidenav-settings">
+        <div class="set-time">
+          <p class="settings-title">Set custom time (mins)</p>
+          <div class="set-pomo">
+            <label for="set-pomo">Pomodoro</label>
+            <input type="number" name="set-pomo" id="set-pomo" min="0" max="59" value="45">
+          </div>
+          <div class="set-shortbreak">
+            <label for="set-pomo">Short Break</label>
+            <input type="number" name="set-shortbreak" id="set-shortbreak" min="0" max="59" value="15">
+          </div>
+          <div class="set-longbreak">
+            <label for="set-pomo">Long Break</label>
+            <input type="number" name="set-longbreak" id="set-longbreak" min="0" max="59" value="30">
+          </div>
+        </div>
+
+        <div class="auto-start">
+          <p class="settings-title">Auto Start</p>
+
+          <div class="auto-start-pomo">
+            <p>Pomodoro</p>
+            <label class="switch">
+              <input type="checkbox" id="auto-pomo-checkbox">
+              <span class="slider round"></span>
+            </label>
+          </div>
+
+          <div class="auto-start-break">
+            <p>Break</p>
+            <label class="switch">
+              <input type="checkbox" id="auto-break-checkbox">
+              <span class="slider round"></span>
+            </label>
+          </div>
+          
+        </div>
+
+        <div class="alarm-sound">
+
+          <p class="settings-title">Volume</p>
+
+          <div class="option-pool">
+            <label for="cars">Choose sound: </label>
+            <select name="sound-pool" id="sound-pool">
+              <option value="bell">Bell</option>
+              <option value="bird">Bird</option>
+              <option value="horn">Horn</option>
+            </select>
+          </div>
+
+          <div class="volumeslider">
+            <label for="slider">Volume: </label>
+            <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+          </div>
+
+        </div>
+
+        <div class="apply-settings">
+          <button id="settings-save-btn">Save</button>
+        </div>
+
+      </div>  
+      
+        
+    </div>
+    
+    <!-- Use any element to open the sidenav -->
+    <!-- <span onclick="openNav()">open</span> -->
+    
+    <div class="container-child1">
+      <!-- NAVBAR -->
+      <div class="navbar">
+
+        <div class="logo"><a id="logo-link" href="index.html" >AtomTimer</a></div>
+
+        <div class="progress-div">
+          <div class="progress-bar"></div>
+        </div>
+
+        <div class="profile-settings">
+          <!-- <i class="fas fa-2x fa-user"></i> -->
+          <i class="fas fa-2x fa-cog" onclick="openNav()"></i>
+        </div>
+
+      </div>
+
+      <!-- MAIN -->
+      <div class="main">
+        <div class="main-timer">
+
+          <div class="menu">
+            <button id="pomo-btn">Pomodoro</button>
+            <button id="short-break-btn">Short Break</button>
+            <button id="long-break-btn">Long Break</button>
+          </div>
+
+          <div class="circlediv">
+            <div class="timer"></div>
+
+            <div class="start-end">
+              <button id="start-btn">Start</button>
+              <button id="end-btn">End</button>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="main-tasks">
+
+          <!-- React Component -->
+          <div class="task">
+            <div class="task-input-div">
+              <input type="text" id="task-inp" placeholder="Add new task">
+              <i class="fas fa-2x fa-plus-circle" onclick="addTask()"></i>
+            </div>
+            <div class="task-ul">
+              <ul id="task-ul"></ul>
+            </div>
+          </div>
+          <!-- <script type="module" src="./index.js"></script> -->
+          <!-- React Component  -->
+
+        </div>
+      </div>
+
+      <!-- ABOUT -->
+      <div class="about">
+
+        <i id="about-arrow" class="fas fa-1x fa-chevron-down"></i>
+
+      </div>
+    </div>
+    
+
+    <div class="container-child2">
+
+      <div class="info">
+
+        <div class="timer-info">
+          <p id="heading">About AtomTimer</p>
+          <p class="par-content">
+            AtomTimer is an app created in order to help you work / study 
+            more efficiently. It is inspired by various studying techniques and helps you
+            implement them into your studying or working sessions. It mainly focuses on
+            spaced repetition, high intensity sessions and working on specific tasks.
+            This app aims to boost your efficiency and help you make the most of your working / studying time.
+          </p>
+        </div>
+
+        <div class="technique">
+          <p id="heading">About the techniques</p>
+          <p class="par-content">The Pomodoro Technique is created by Francesco Cirillo for a more
+            productive way to work and study. The technique uses a timer to break down
+            work into intervals, traditionally 25 minutes in length, separated by short breaks. - <a id="wiki-link" href="">Wikipedia</a></p>
+        </div>
+
+        <div class="use">
+          <p id="heading">How to use the app</p>
+          <div class="par-content">
+            <ul>
+              <li>Add a task.</li>
+              <li>Press Start to begin your session.</li>
+              <li>Work on your task. It's important that you dont come back to check the remaining time. This way you will keep your focus.</li>
+              <li>When the time expires you will get notified by a gentle sound. Make sure your press Start on the short break menu before starting your break.</li>
+              <li>Now it is time to relax, talk to someone, have a snack or exercise a little. After the break timer expires, go back to step 2.</li>
+              <li>After completing 3 sessions, take a long break and repeat from step 2.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="features">
+          <p id="heading">Features</p>
+          <div class="par-content">
+            <ul>
+              <li>Responsive design that provied a neat UI on every device.</li>
+              <li>'Add task' option to help you organize your workflow.</li>
+              <li>Color transition to make it more enjoyable.</li>
+              <li>Audio notification at the end of every session.</li>
+              <li>Customizable timer to set wokring time based on your needs.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer">
+
+        <div class="social">
+          <a id="in-link" href="https://www.linkedin.com/in/apostolos-draganis-3099b019a/" target="_blank"><i class="fab fa-2x fa-linkedin"></i></a>  
+          <a id="insta-link" href="https://www.instagram.com/apostolis_draganis/" target="_blank"><i class="fab fa-2x fa-instagram"></i></a>  
+        </div>
+
+        <div class="copyright">
+          &copy; Pomotimer 2021. All Rights Reserved.
+        </div>
+
+        <div class="me">
+          Designed and coded by <a id="me-link" href="https://apdraganis.netlify.app/" target="_blank">Apostolos Draganis</a> 
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script src="./script.js"></script>
+
+</body>
+</html>
