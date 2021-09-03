@@ -26,7 +26,7 @@
         <div class="set-time">
           <p class="settings-title">Set custom time (mins)</p>
           <div class="set-pomo">
-            <label for="set-pomo">Pomodoro</label>
+            <label for="set-pomo">Study/Work</label>
             <input type="number" name="set-pomo" id="set-pomo" min="0" max="59" value="45">
           </div>
           <div class="set-shortbreak">
@@ -43,7 +43,7 @@
           <p class="settings-title">Auto Start</p>
 
           <div class="auto-start-pomo">
-            <p>Pomodoro</p>
+            <p>Study/Work</p>
             <label class="switch">
               <input type="checkbox" id="auto-pomo-checkbox">
               <span class="slider round"></span>
@@ -111,7 +111,7 @@
         <div class="main-timer">
 
           <div class="menu">
-            <button id="pomo-btn">Pomodoro</button>
+            <button id="pomo-btn">Study / Work</button>
             <button id="short-break-btn">Short Break</button>
             <button id="long-break-btn">Long Break</button>
           </div>
@@ -172,22 +172,28 @@
         <div class="technique">
           <h1 id="heading">About the techniques</h1>
 
-          <h3>Pomodoro Technique</h3>
+          <h3 id="heading-child">Pomodoro Technique</h3>
           <p class="par-content">The Pomodoro Technique is created by Francesco Cirillo for a more
                                 productive way to work and study. The technique uses a timer to break down
-                                work into intervals, traditionally 25 minutes in length, separated by short breaks. - <a id="wiki-link" href="https://en.wikipedia.org/wiki/Pomodoro_Technique" target="_blank">Wikipedia</a></p>
+                                work into intervals, traditionally 25 minutes in length, separated by short breaks.
+                                <br>Source: <a class="source-link" href="https://en.wikipedia.org/wiki/Pomodoro_Technique" target="_blank">Wikipedia</a>
+                                <br><br>Learn more about this technique in the <a class="source-link" href="https://francescocirillo.com/pages/pomodoro-technique" target="_blank">official website</a>. </p>
 
-          <h3>Spaced Repetition</h3>
+          <h3 id="heading-child">Spaced Repetition</h3>
           <p class="par-content">Spaced repetition is an evidence-based learning technique that is usually performed with flashcards. 
                                  Newly introduced and more difficult flashcards are shown more frequently, while older and less difficult flashcards 
                                  are shown less frequently in order to exploit the psychological spacing effect. 
-                                 The use of spaced repetition has been proven to increase rate of learning. - <a id="wiki-link" href="https://en.wikipedia.org/wiki/Spaced_repetition" target="_blank">Wikipedia</a></p>
+                                 The use of spaced repetition has been proven to increase rate of learning.
+                                 <br> Source: <a class="source-link" href="https://en.wikipedia.org/wiki/Spaced_repetition" target="_blank">Wikipedia</a>
+                                          .<br><br>You can get a more detailed view in <a class="source-link" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5126970/" target="_blank">this</a> scientific article by Paul Smolen, Yili Zhang and John H. Bryne (January 25, 2016). </p>
 
-          <h3>Task Management</h3>
-          <p class="par-content">Task management should be not be neglected when you are trying to boost your productivity.
+          <h3 id="heading-child">Task Management</h3>
+          <p class="par-content">Task management should be not be neglected when your goal is to boost your productivity.
                                 By breaking your work down into smaller, more achievable tasks you will be able to complete larger tasks that
                                 initialy may have seemed overwhelming. The smaller tasks should be very specific and attainable within a relatively
                                 short period of time. This way you will eliminate procrastination and start wokring on your tasks with extreme focus.
+                                <br><br> For more details check out: <a class="source-link" href="https://www.bowdoin.edu/baldwin-center/pdf/handout-breaking-large-projects-down.pdf" target="_blank">Baldwin Center For Learning And Teaching</a>
+                                 and the <a class="source-link" href="https://news.uga.edu/break-large-tasks-down-into-smaller-more-manageable-pieces/" target="_blank" >University Of Georgia</a>.
           </p>
           
         </div>
@@ -201,7 +207,7 @@
               <li>Work on your task. It's important that you dont come back to check the remaining time. This way you will keep your focus.</li>
               <li>When the time expires you will get notified by a gentle sound. Make sure your press Start on the short break menu before starting your break.</li>
               <li>Now it is time to relax, talk to someone, have a snack or exercise a little. After the break timer expires, go back to step 2.</li>
-              <li>After completing 3 sessions, take a long break and repeat from step 2.</li>
+              <li>After completing 3-4 sessions, take a long break and repeat from step 2.</li>
             </ul>
           </div>
         </div>
@@ -241,6 +247,9 @@
 
   </div>
 
+  <script src="./js/tasks.js"></script>
+  <script src="./js/aboutArrow.js"></script>
+  <script src="./js/opencloseNav.js"></script>
   <script src="./script.js"></script>
 
 </body>

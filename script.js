@@ -6,26 +6,19 @@ progressDiv = document.querySelector(".progress-div");
 barEl = document.querySelector(".progress-bar");
 
 // read settings
-let customMode = false;
-settingsPomoInp = document.querySelector("#set-pomo");
-settingsSBreakInp = document.querySelector("#set-shortbreak");
-settingsLBreakInp = document.querySelector("#set-longbreak");
-settingsPomoCheckbox = document.querySelector("#auto-pomo-checkbox");
-settingsBreakCheckbox = document.querySelector("#auto-break-checkbox");
-settingsSoundSelect = document.querySelector("#sound-pool");
-settingsVolumeSlider = document.querySelector("#myRange");
+customMode = false;
 
 // save settings
 settingsSaveBtn = document.querySelector("#settings-save-btn");
 settingsSaveBtn.addEventListener('click', () => {
   customMode = true;
-  settingsPomoVal = settingsPomoInp.value;
-  settingsSBreakVal = settingsSBreakInp.value;
-  settingsLBreakVal = settingsLBreakInp.value;
-  settingsPomoCheckboxVal = settingsPomoCheckbox.checked;
-  settingsBreakCheckboxVal = settingsBreakCheckbox.checked;
-  settingsSoundVal = settingsSoundSelect.value;
-  settingsVolumeVal = settingsVolumeSlider.value;
+  settingsPomoVal = document.querySelector("#set-pomo").value;
+  settingsSBreakVal = document.querySelector("#set-shortbreak").value;
+  settingsLBreakVal = document.querySelector("#set-longbreak").value;
+  settingsPomoCheckboxVal = document.querySelector("#auto-pomo-checkbox").checked;
+  settingsBreakCheckboxVal = document.querySelector("#auto-break-checkbox").checked;
+  settingsSoundVal = document.querySelector("#sound-pool").value;
+  settingsVolumeVal = document.querySelector("#myRange").value;
 
   // check for invalid numbers on custom inputs
   if (settingsPomoVal <= 0 || settingsSBreakVal <= 0 || settingsLBreakVal <= 0) {
@@ -65,10 +58,6 @@ function setAudio() {
 function setVolume() {
  audio.volume = settingsVolumeVal / 100
 }
-
-
-// var audio = new Audio('audio_file.mp3');
-// audio.play();8
 
 
 // Countdown timer
@@ -224,136 +213,18 @@ function customClearInterval() {
 }
 
 
-
-
-
-// scroll when click about arrow
-let aboutArrow = document.querySelector('#about-arrow');
-aboutArrow.addEventListener('click', () => {
-  window.scrollBy(0, window.innerHeight);
-});
-
-
-// TASKS
-if (localStorage.getItem("tasks") !== null) {
-  console.log('Tasks found!')
-  storedTasks = JSON.parse(localStorage.getItem("tasks")); // retrive stored tasks as array of strings
-  tasksExist = true;
-  for (i=0; i < storedTasks.length; i++) {                 // display stored tasks on the page
-    displayTask(i)
-  } 
-
-} else {
-  console.log('No tasks found!')
-}
-
-// Functions
-function displayTask (i) {
-  newLi = document.createElement("li");
-  newLi.className = "task-li";
-  taskPar = document.createElement("p");
-  taskPar.textContent = storedTasks[i]
-  newLi.appendChild(taskPar);
-  styleTask();
-  document.getElementById("task-ul").appendChild(newLi);
-}
-
-function addTask () {
-  
-  taskInputVal = document.getElementById("task-inp").value;
-  if (taskInputVal === '') {
-    alert("Add a task!")
-  } else {
-  // create li element
-  newLi = document.createElement("li");
-  taskPar = document.createElement("p");
-  taskPar.textContent = taskInputVal;
-  newLi.className = "task-li";
-  newLi.appendChild(taskPar);
-  styleTask()
-  document.getElementById("task-ul").appendChild(newLi);
-  
-  // save task
-  saveTask()
-  
-
-  
-  }
-  document.getElementById('task-inp').value = "";
-}
-
-function styleTask() {
-  // add delete btn
-  minusIcon = document.createElement("i");
-  minusIcon.className = "fas fa-minus-circle deleteTask";
-  minusIcon.setAttribute("onclick", "deleteTask(this)");
-  newLi.appendChild(minusIcon);
-  
-  // add task arrow
-  arrowIcon = document.createElement("i");
-  arrowIcon.className = "fas fa-caret-right";
-  taskPar.before(arrowIcon);
-}
-
-function saveTask() {
-  if (localStorage.getItem('tasks') !== null) {
-    tasksArray = JSON.parse(localStorage.getItem('tasks'))
-    tasksArray.push(taskInputVal);
-    localStorage.setItem("tasks", JSON.stringify(tasksArray))
-  } else {
-    tasksArray = [];
-    tasksArray.push(taskInputVal);
-    localStorage.setItem("tasks", JSON.stringify(tasksArray))
-  }
-}
-
-function deleteTask(task) {                            // inside this function, task refers to the i element
-  task.parentElement.remove();
-  task.parentElement.textContent;                     // need to get the string of the task that I want to delete
-  storedTasks = JSON.parse(localStorage.getItem("tasks"));   // retrive stored tasks as array of strings
-  taskIndex = storedTasks.indexOf(task.parentElement.textContent)
-  storedTasks.splice(taskIndex, 1);
-  localStorage.setItem("tasks", JSON.stringify(storedTasks))
-}
-
-// add task by pressing enter
-taskInput = document.querySelector("#task-inp");
-taskInput.addEventListener('keydown', () => {
-  if (event.keyCode === 13) {
-    addTask()
-  };
-})
-
-
-// Sidenav
-/* Open the sidenav */
-function openNav() {
-  if (window.innerWidth > 500) {
-    document.getElementById("mySidenav").style.width = "250px";
-  } else {
-    document.getElementById("mySidenav").style.width = "100%";
-  }
-
-  setTimeout( () => {
-    document.querySelector(".sidenav-settings").style.display = "flex";
-  }, 280)
-
-}
-
-/* Close/hide the sidenav */
-function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
-  document.querySelector(".sidenav-settings").style.display = "none";
-}
-
-
 // Function to color on mode change
 function colorText(colorClass) {
   // change bg, link, sidenav arrow color
   document.querySelector("#me-link").className = `${colorClass}`;
   document.querySelector("#insta-link").className = `${colorClass}`;
   document.querySelector("#in-link").className = `${colorClass}`;
-  document.querySelector("#wiki-link").className = `${colorClass}`;
+    // source links
+    sourceLink = document.querySelectorAll(".source-link");
+    for (i=0; i < sourceLink.length; i++) {
+      sourceLink[i].classList.add(`${colorClass}`);
+    }
+    // document.querySelectorAll(".source-link").className = `${colorClass}`;
   
   infoHeadings = document.querySelectorAll('#heading');
   for (i=0; i < infoHeadings.length; i++) {
@@ -380,5 +251,3 @@ function colorText(colorClass) {
 function colorBg(colorClass) {
   document.body.className = `${colorClass}`;
 }
-
-

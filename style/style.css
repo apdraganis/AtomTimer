@@ -514,12 +514,18 @@ body {
   font-weight: 700;
   margin-top: 80px;
 }
+.container-child2 #heading-child {
+  margin-top: 40px;
+
+  text-decoration: underline;
+  font-weight: 500;
+}
 .container-child2 .par-content {
   font-size: 18px;
   font-weight: 300;
   text-align: left;
 }
-.container-child2 .par-content #wiki-link {
+.container-child2 .par-content .source-link {
   text-decoration: none;
   font-weight: 700;
 }
