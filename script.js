@@ -1,5 +1,7 @@
-//  BUGS
-// να μην κουνιουνται τα κουμπια
+// title element - overwritten with the new time along with timerEl
+titleEl = document.querySelector('title');
+
+
 
 //  Progress Bar
 progressDiv = document.querySelector(".progress-div");
@@ -33,6 +35,7 @@ settingsSaveBtn.addEventListener('click', () => {
   mode = "pomo";
   resetTimer(mode);
   timerEl.textContent = convertSeconds(setTimeLeft(mode) - counter);
+  titleEl.textContent = convertSeconds(setTimeLeft(mode) - counter);
   // change bg,link,sidenav arrow color
   colorBg('rBg')
   colorText('rTxt')
@@ -61,14 +64,18 @@ function setVolume() {
 
 
 // Countdown timer
-let startstopBtn = document.querySelector("#start-btn");
-let counter = 0; // change this for test sessions
-let timerEl = document.querySelector(".timer");
-let mode = "pomo";
+startstopBtn = document.querySelector("#start-btn");
+counter = 0; // change this for test sessions
+timerEl = document.querySelector(".timer");
+mode = "pomo";
 colorBg('rBg');
 colorText('rTxt');
 let running = false;
 timerEl.textContent = convertSeconds(setTimeLeft(mode) - counter);
+window.onload = function() {
+  titleEl.textContent = convertSeconds(setTimeLeft(mode) - counter);
+}
+// titleEl.textContent = convertSeconds(setTimeLeft(mode) - counter);
 let interval ;
 
 startstopBtn.addEventListener('click', () => {
@@ -91,12 +98,22 @@ function convertSeconds(s) {
 function countDown() {
   counter ++;
   timerEl.textContent = convertSeconds(setTimeLeft(mode) - counter);
+  titleEl.textContent = convertSeconds(setTimeLeft(mode) - counter);
+
+  timerZeroes();
+
+  // progress bar
+  barEl.style.width = `${100 - ( (timeLeft - counter) * (100/timeLeft) )}%`
+
+};
+
+function timerZeroes() {
   if (counter === timeLeft) {
 
     audio.play();
     customClearInterval();
     counter = 0;
-
+    
     // switch mode automatically after end of session
     if (mode == 'pomo') {
       mode = 'short-break';
@@ -109,6 +126,7 @@ function countDown() {
     }
     setTimeLeft(mode);
     timerEl.textContent = convertSeconds(setTimeLeft(mode) - counter);
+    titleEl.textContent = convertSeconds(setTimeLeft(mode) - counter);
 
     // start counting automatically if enabled from settings
     if (settingsPomoCheckboxVal == true) {
@@ -126,11 +144,8 @@ function countDown() {
       };
     };
   };
+}
 
-  // progress bar
-  barEl.style.width = `${100 - ( (timeLeft - counter) * (100/timeLeft) )}%`
-
-};
 
 // Pomodoro - Short Break - Long Break option
 let pomodoroBtn = document.querySelector("#pomo-btn");
@@ -141,6 +156,7 @@ pomodoroBtn.addEventListener('click', () => {
   mode = "pomo";
   resetTimer(mode);
   timerEl.textContent = convertSeconds(setTimeLeft(mode) - counter);
+  titleEl.textContent = convertSeconds(setTimeLeft(mode) - counter);
   // change bg,link,sidenav arrow color
   colorBg('rBg')
   colorText('rTxt')
@@ -150,6 +166,7 @@ shortBreakBtn.addEventListener('click', () => {
   mode = "short-break";
   resetTimer(mode);
   timerEl.textContent = convertSeconds(setTimeLeft(mode) - counter);
+  titleEl.textContent = convertSeconds(setTimeLeft(mode) - counter);
   // change bg,link,sidenav arrow color
   colorBg('gBg')
   colorText('gTxt')
@@ -158,6 +175,7 @@ longBreakBtn.addEventListener('click', () => {
   mode = "long-break";
   resetTimer(mode)
   timerEl.textContent = convertSeconds(setTimeLeft(mode) - counter);
+  titleEl.textContent = convertSeconds(setTimeLeft(mode) - counter);
   // change bg,sideav arrow color
   colorBg('bBg')
   colorText('bTxt')
@@ -194,6 +212,7 @@ let endBtn = document.querySelector("#end-btn");
 endBtn.addEventListener('click', () => {
   resetTimer(mode);
   timerEl.textContent = convertSeconds(setTimeLeft(mode) - counter);
+  titleEl.textContent = convertSeconds(setTimeLeft(mode) - counter);
 });
 
 // stop btn
@@ -262,3 +281,5 @@ function colorText(colorClass) {
 function colorBg(colorClass) {
   document.body.className = `${colorClass}`;
 }
+
+
