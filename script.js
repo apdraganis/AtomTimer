@@ -222,7 +222,18 @@ function colorText(colorClass) {
     // source links
     sourceLink = document.querySelectorAll(".source-link");
     for (i=0; i < sourceLink.length; i++) {
+      if (sourceLink[i].className == 'source-link rTxt') {
+        sourceLink[i].classList.remove('rTxt');
+        sourceLink[i].classList.add(`${colorClass}`);
+      } else if (sourceLink[i].className == 'source-link gTxt') {
+        sourceLink[i].classList.remove('gTxt');
+        sourceLink[i].classList.add(`${colorClass}`);
+      } else if (sourceLink[i].className == 'source-link bTxt') {
+        sourceLink[i].classList.remove('bTxt');
+        sourceLink[i].classList.add(`${colorClass}`);
+      } else {
       sourceLink[i].classList.add(`${colorClass}`);
+      }
     }
     // document.querySelectorAll(".source-link").className = `${colorClass}`;
   
