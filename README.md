@@ -1,13 +1,6 @@
-# Timer app inspired by the pomodoro technique.
+# Productivity Timer App (AtomTimer)
+AtomTimer is an app created in order to help you work / study more efficiently. It is inspired by various studying techniques and helps you implement them into your studying or working sessions. It mainly focuses on spaced repetition, high intensity sessions and working on specific tasks. This app aims to boost your efficiency and help you make the most of your working / studying time.
 
-# Aim of the app
-- The goal is to create a timer countdown with 3 modes.. pomodoro, short break and long break. The user will be able to start a session and automatically
-get notified when the time runs out. This way the user can be more focused and productive.
-
-# Features
-- Responsive mobile-first design.
-- Add task option.
-- Create profile.
-- Customizable timer.
-- Audio notification.
-- Background color transitions between each session.
+## Screenshot
+![](./style/images/screenshot_1.png)
+![](./style/images/screenshot_2.png)
