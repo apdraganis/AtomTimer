@@ -1,4 +1,3 @@
-# App is still in progress
 # Timer app inspired by the pomodoro technique.
 
 # Aim of the app
