@@ -59,7 +59,7 @@ function setAudio() {
 }
 
 function setVolume() {
- audio.volume = settingsVolumeVal / 100
+  audio.volume = settingsVolumeVal / 100
 }
 
 
@@ -72,11 +72,11 @@ colorBg('rBg');
 colorText('rTxt');
 let running = false;
 timerEl.textContent = convertSeconds(setTimeLeft(mode) - counter);
-window.onload = function() {
+window.onload = function () {
   titleEl.textContent = convertSeconds(setTimeLeft(mode) - counter);
 }
 // titleEl.textContent = convertSeconds(setTimeLeft(mode) - counter);
-let interval ;
+let interval;
 
 startstopBtn.addEventListener('click', () => {
   if (running == false) {
@@ -86,7 +86,7 @@ startstopBtn.addEventListener('click', () => {
   } else {
     customClearInterval();
   }
-  
+
 });
 
 function convertSeconds(s) {
@@ -96,14 +96,14 @@ function convertSeconds(s) {
 }
 
 function countDown() {
-  counter ++;
+  counter++;
   timerEl.textContent = convertSeconds(setTimeLeft(mode) - counter);
   titleEl.textContent = convertSeconds(setTimeLeft(mode) - counter);
 
   timerZeroes();
 
   // progress bar
-  barEl.style.width = `${100 - ( (timeLeft - counter) * (100/timeLeft) )}%`
+  barEl.style.width = `${100 - ((timeLeft - counter) * (100 / timeLeft))}%`
 
 };
 
@@ -113,7 +113,7 @@ function timerZeroes() {
     audio.play();
     customClearInterval();
     counter = 0;
-    
+
     // switch mode automatically after end of session
     if (mode == 'pomo') {
       mode = 'short-break';
@@ -160,7 +160,7 @@ pomodoroBtn.addEventListener('click', () => {
   // change bg,link,sidenav arrow color
   colorBg('rBg')
   colorText('rTxt')
-  
+
 });
 shortBreakBtn.addEventListener('click', () => {
   mode = "short-break";
@@ -190,11 +190,11 @@ function resetTimer(mode) {
 function setTimeLeft(mode) {
   if (customMode) {
     if (mode == "pomo") {
-      return timeLeft = parseInt(settingsPomoVal)*60;
+      return timeLeft = parseInt(settingsPomoVal) * 60;
     } else if (mode == "short-break") {
-      return timeLeft = parseInt(settingsSBreakVal)*60;
+      return timeLeft = parseInt(settingsSBreakVal) * 60;
     } else if (mode == "long-break") {
-      return timeLeft = parseInt(settingsLBreakVal)*60;
+      return timeLeft = parseInt(settingsLBreakVal) * 60;
     }
   } else {
     if (mode == "pomo") {
@@ -216,7 +216,7 @@ endBtn.addEventListener('click', () => {
 });
 
 // stop btn
-function setStartStopBtn(){ 
+function setStartStopBtn() {
   if (running) {
     startstopBtn.textContent = "Stop";
   } else {
@@ -236,33 +236,33 @@ function customClearInterval() {
 function colorText(colorClass) {
   // change bg, link, sidenav arrow color
   document.querySelector("#me-link").className = `${colorClass}`;
-  document.querySelector("#insta-link").className = `${colorClass}`;
   document.querySelector("#in-link").className = `${colorClass}`;
-    // source links
-    sourceLink = document.querySelectorAll(".source-link");
-    for (i=0; i < sourceLink.length; i++) {
-      if (sourceLink[i].className == 'source-link rTxt') {
-        sourceLink[i].classList.remove('rTxt');
-        sourceLink[i].classList.add(`${colorClass}`);
-      } else if (sourceLink[i].className == 'source-link gTxt') {
-        sourceLink[i].classList.remove('gTxt');
-        sourceLink[i].classList.add(`${colorClass}`);
-      } else if (sourceLink[i].className == 'source-link bTxt') {
-        sourceLink[i].classList.remove('bTxt');
-        sourceLink[i].classList.add(`${colorClass}`);
-      } else {
+  document.querySelector("#gh-link").className = `${colorClass}`;
+  // source links
+  sourceLink = document.querySelectorAll(".source-link");
+  for (i = 0; i < sourceLink.length; i++) {
+    if (sourceLink[i].className == 'source-link rTxt') {
+      sourceLink[i].classList.remove('rTxt');
       sourceLink[i].classList.add(`${colorClass}`);
-      }
+    } else if (sourceLink[i].className == 'source-link gTxt') {
+      sourceLink[i].classList.remove('gTxt');
+      sourceLink[i].classList.add(`${colorClass}`);
+    } else if (sourceLink[i].className == 'source-link bTxt') {
+      sourceLink[i].classList.remove('bTxt');
+      sourceLink[i].classList.add(`${colorClass}`);
+    } else {
+      sourceLink[i].classList.add(`${colorClass}`);
     }
-    // document.querySelectorAll(".source-link").className = `${colorClass}`;
-  
+  }
+  // document.querySelectorAll(".source-link").className = `${colorClass}`;
+
   infoHeadings = document.querySelectorAll('#heading');
-  for (i=0; i < infoHeadings.length; i++) {
+  for (i = 0; i < infoHeadings.length; i++) {
     infoHeadings[i].className = `${colorClass}`;
   }
 
   settingsTitle = document.querySelectorAll(".settings-title");
-  for (i=0; i < settingsTitle.length; i++) {
+  for (i = 0; i < settingsTitle.length; i++) {
     if (settingsTitle[i].className == 'settings-title rTxt') {
       settingsTitle[i].classList.remove('rTxt');
       settingsTitle[i].classList.add(`${colorClass}`);
@@ -273,7 +273,7 @@ function colorText(colorClass) {
       settingsTitle[i].classList.remove('bTxt');
       settingsTitle[i].classList.add(`${colorClass}`);
     } else {
-    settingsTitle[i].classList.add(`${colorClass}`);
+      settingsTitle[i].classList.add(`${colorClass}`);
     }
   }
 };
